@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+html {
+    display: flex;
+    justify-content: center;
+    margin-top: 250px;
+}
+
+body {
+    color: #555659;
+    min-width: 800px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+::selection {
+    background: lightgrey;
+    /* WebKit/Blink Browsers */
+}
+
+::-moz-selection {
+    background: lightgrey;
+    /* Gecko Browsers */
+}
+
+.greeting {
+    color: #3d7562;
+    font-size: 20px;
+    align-self: start;
+    background-color: aquamarine;
+    width: 160px;
+    padding: 5px;
+}
+
+.temperature-description {
+    max-width: 240px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.weather-container {
+    border-radius: 5px;
+    padding: 80px;
+    -webkit-box-shadow: 0px 134px 155px 7px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0px 134px 155px 7px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 134px 155px 7px rgba(0, 0, 0, 0.05);
+}
+
+.weather-container,
+.temperature {
+    width: 100%;
+    display: flex;
+}
+
+.greeting,
+.weather-container,
+.temperature {
+    cursor: pointer;
+}
+
+.content {
+    margin: auto;
+}
+
+footer a {
+    margin-top: 15px;
+    font-size: 12px;
+    display: flex;
+    justify-content: left;
+    font-style: italic;
+    color: lightgrey;
+}
+
+footer a:hover {
+    color: grey;
+    text-decoration: none;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+footer a:not( :hover) {
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+#loader {
+    z-index: 1000;
+    position: relative;
+    right: 50%;
+    border: 3px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 3px solid lightgrey;
+    width: 40px;
+    height: 40px;
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    /* Safari */
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width:800px) {
+    html {
+        margin-top: 150px !important;
+    }
+    body {
+        min-width: 90%;
+    }
+    .greeting {
+        font-size: 1.2em;
+    }
+    .weather-container {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+    }
+    h1 {
+        font-size: 1.7em;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+    .temperature-description {
+        max-width: 160px;
+        font-size: 1em;
+    }
+    .icon {
+        height: 50px;
+        width: 50px;
+    }
+}
