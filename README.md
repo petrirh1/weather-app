@@ -5,4 +5,4 @@ Minimal weather application which is written with html and vanilla javascript. I
 It retrieves current location and forecast automatically.
 
 Since it uses HTML5 Geolocation, it only works on secure origins which includes localhost on most modern browsers.
-Though it seems to be working just fine on Microsoft Edge *(desktop version 44.17763.1.0)* but that may change in near future.
+Though it seems to be working just fine on Microsoft Edge `(desktop version 44.17763.1.0)` but that may change in near future.
