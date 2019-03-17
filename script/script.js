@@ -16,7 +16,7 @@ window.addEventListener('load', () => {
 
             // CORS is disabled on Dark Sky servers, so we use proxy to get the data
             // this information can be found from Dark Sky API documentation
-            const proxy = 'https://cors-anywhere.herokuapp.com/'
+            const proxy = 'https://yacdn.org/proxy/';
 
             // units auto parameter: automatically selects unit based on geographic location
             // exclude parameter: excludes defined data blocks from the API response
