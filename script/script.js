@@ -21,7 +21,7 @@ window.addEventListener('load', () => {
             // exclude parameter: excludes defined data blocks from the API response
 
             // fill secret key provided by Dark Sky
-            const api = `${proxy}https://api.darksky.net/forecast/ENTER SECRET KEY/${lat},${long}?units=auto&exclude=minutely,hourly,daily,alerts,flags`;
+            const api = `${proxy}https://api.darksky.net/forecast/ENTER_SECRET_KEY/${lat},${long}?units=auto&exclude=minutely,hourly,daily,alerts,flags`;
 
             // get weather forecast data
             fetch(api)
