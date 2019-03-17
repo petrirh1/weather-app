@@ -32,7 +32,7 @@ window.addEventListener('load', () => {
                     return response.json();
                 })
                 .then(data => {
-                    var { temperature, summary, icon } = data.currently;;
+                    var { temperature, summary, icon } = data.currently;
                     //console.log(data.currently);
                     // set DOM elements from the API
                     temperatureDegree.textContent = Math.round(temperature) + "°";
