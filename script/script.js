@@ -19,8 +19,11 @@ window.addEventListener('load', () => {
 
             // units auto parameter: automatically selects unit based on geographic location
             // exclude parameter: excludes defined data blocks from the API response
-            const api = `${proxy}https://api.darksky.net/forecast/153f0348adc074e56e48179ed7d9be00/${lat},${long}?units=auto&exclude=minutely,hourly,daily,alerts,flags`;
 
+            // fill secret key provided by Dark Sky
+            const api = `${proxy}https://api.darksky.net/forecast/ENTER SECRET KEY/${lat},${long}?units=auto&exclude=minutely,hourly,daily,alerts,flags`;
+
+            // get weather forecast data
             fetch(api)
                 .then(response => {
                     // turn loader animation off
@@ -54,9 +57,10 @@ window.addEventListener('load', () => {
 
 
 // HERE location services platform initialization
+// fill app id and app code with your data provided by HERE
 var platform = new H.service.Platform({
-    "app_id": "274SJuRdZP7VA8XcErv4",
-    "app_code": "XQ0PrJ2dl0Ihg8GEG36aSA"
+    "app_id": "APP_ID",
+    "app_code": "APP_CODE"
 });
 
 
