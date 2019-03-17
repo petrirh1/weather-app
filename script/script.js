@@ -14,7 +14,8 @@ window.addEventListener('load', () => {
             long = position.coords.longitude;
             lat = position.coords.latitude;
 
-            // this is used to avoid cross-origin requests being blocked
+            // CORS is disabled on Dark Sky servers, so we use proxy to get the data
+            // this information can be found from Dark Sky API documentation
             const proxy = 'https://cors-anywhere.herokuapp.com/'
 
             // units auto parameter: automatically selects unit based on geographic location
