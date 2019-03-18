@@ -15,7 +15,6 @@ window.addEventListener('load', () => {
             lat = position.coords.latitude;
 
             // CORS is disabled on Dark Sky servers, so we use proxy to get the data
-            // this information can be found from Dark Sky API documentation
             const proxy = 'https://yacdn.org/proxy/';
 
             // units auto parameter: automatically selects unit based on geographic location
