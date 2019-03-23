@@ -5,4 +5,4 @@ Minimal weather application which is written with HTML and vanilla Javascript. I
 
 Icons are Dark Sky's awesome `Skycons.`
 
-<a href="https://petrirh1.github.io/weather-app/" title="weather-app">`Click here`</a> to see it action.
+<a href="https://petrirh1.github.io/weather-app/" title="weather-app">`Click here`</a> to see it in action.
