@@ -15,24 +15,28 @@
     <script src="https://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
     <script src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css" id="style">
     <title>Weather</title>
 </head>
 
 <body>
     <h4 class="greeting"></h4>
-    <div class="weather-container">
-        <h1 class="location-city"></h1>
+    <div class="weather-container ">
+        <h1 class="location">--</h1>
         <div class="content">
             <div id="loader"></div>
-            <h2 class="temperature-degree"></h2>
+            <h2 class="temperature"></h2>
             <div class="temperature-description"></div>
         </div>
-        <canvas class="icon" width="70" height="70"></canvas>
+        <canvas class="icon " width="80 " height="80"></canvas>
     </div>
-    <footer><a href="https://darksky.net">Powered by Dark Sky</a></footer>
-    <script src="./icons/skycons.js"></script>
-    <script src="./script/script.js"></script>
+    <ul>
+        <li><a href="http://translate.yandex.com/">Powered by Yandex.Translate</a></li>
+        <span>|</span>
+        <li><a href="https://github.com/petrirh1/weather-app">Github</a></li>
+    </ul>
+    <script src="./script/script.js "></script>
+    <script src="./icons/skycons.js "></script>
 </body>
 
 </html>
