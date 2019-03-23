@@ -10,14 +10,12 @@ window.addEventListener('load', () => {
     let temperature = document.querySelector('.temperature');
     let temperatureDescription = document.querySelector('.temperature-description');
 
-    localStorage.removeItem("0", "1", "2");
-
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
 
                 // locate user's position coordinates
                 long = position.coords.longitude;
-                lat = position.coords.latitude + 0.05;
+                lat = position.coords.latitude;
 
                 // get user's preferred language
                 var userLang = navigator.language || navigator.userLanguage;
