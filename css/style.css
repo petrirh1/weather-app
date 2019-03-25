@@ -1,167 +1,164 @@
 @import url("https://fonts.googleapis.com/css?family=Quicksand");
 html {
-    display: flex;
-    justify-content: center;
-    margin-top: 250px;
+  display: flex;
+  justify-content: center;
+  margin-top: 250px;
 }
 
 body {
-    color: #555659;
-    min-width: 800px;
-    font-family: "Quicksand", sans-serif;
+  color: #555659;
+  min-width: 800px;
+  font-family: "Quicksand", sans-serif;
 }
 
 ::selection {
-    background: lightgrey;
-    /* WebKit/Blink Browsers */
+  background: lightgrey;
+  /* WebKit/Blink Browsers */
 }
 
 ::-moz-selection {
-    background: lightgrey;
-    /* Gecko Browsers */
+  background: lightgrey;
+  /* Gecko Browsers */
 }
 
 .greeting {
-    display: inline-block;
-    color: #3d7562;
-    font-size: 20px;
-    background-color: aquamarine;
-    max-width: 200px;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 0px;
+  display: inline-block;
+  color: #3d7562;
+  font-size: 20px;
+  background-color: aquamarine;
+  max-width: 200px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
 }
 
 .temperature-description {
-    font-size: 18px;
-    max-width: 240px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  font-size: 18px;
+  max-width: 240px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .weather-container {
-    /* left-top, right-top, rigth-bottom, left-bottom */
-    border-radius: 0px 5px 5px 5px;
-    padding: 80px;
-    -webkit-box-shadow: 0px 45px 133px -25px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0px 45px 133px -25px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 45px 133px -25px rgba(0, 0, 0, 0.1);
+  /* left-top, right-top, rigth-bottom, left-bottom */
+  border-radius: 0px 5px 5px 5px;
+  padding: 80px;
+  -webkit-box-shadow: 0px 45px 133px -25px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 45px 133px -25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 45px 133px -25px rgba(0, 0, 0, 0.1);
 }
 
 .weather-container,
 .temperature {
-    width: 100%;
-    display: flex;
+  width: 100%;
+  display: flex;
 }
 
 .greeting,
 .weather-container,
 .temperature {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .content {
-    margin: auto;
+  margin: auto;
 }
 
 #loader {
-    z-index: 1000;
-    position: relative;
-    border: 3px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 3px solid lightgrey;
-    width: 40px;
-    height: 40px;
-    -webkit-animation: spin 2s linear infinite;
-    /* Safari */
-    animation: spin 2s linear infinite;
+  z-index: 1000;
+  position: relative;
+  border: 3px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 3px solid lightgrey;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite;
 }
 
 ul {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0px;
-    margin-top: 10px;
-    list-style: none;
-    font-style: italic;
-    font-size: 12px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0px;
+  margin-top: 10px;
+  list-style: none;
+  font-style: italic;
+  font-size: 12px;
 }
 
 a,
 span {
-    color: lightgrey;
+  color: lightgrey;
 }
 
 a {
-    padding: 10px;
+  padding: 10px;
 }
 
 a:hover {
-    color: grey;
-    text-decoration: none;
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
+  color: grey;
+  text-decoration: none;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
 }
 
-a:not( :hover) {
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
+a:not(:hover) {
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
 }
 
 @-webkit-keyframes spin {
-    /* Safari */
-    0% {
-        -webkit-transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
+  /* Safari */
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-
-/* 992px is a "typical breakpoint" */
-
-@media screen and (max-width:992px) {
-    html {
-        margin-top: 150px !important;
-    }
-    body {
-        min-width: 90%;
-    }
-    .greeting {
-        font-size: 1.2em;
-    }
-    .weather-container {
-        padding-left: 30px !important;
-        padding-right: 30px !important;
-    }
-    h1 {
-        font-size: 1.7em;
-    }
-    h2 {
-        font-size: 1.5em;
-    }
-    .temperature-description {
-        max-width: 160px;
-        font-size: 1em;
-    }
-    .icon {
-        height: 50px;
-        width: 50px;
-    }
+@media screen and (max-width: 600px) {
+  html {
+    margin-top: 150px !important;
+  }
+  body {
+    min-width: 90%;
+  }
+  .greeting {
+    font-size: 1.2em;
+  }
+  .weather-container {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+  h1 {
+    font-size: 1.7em;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  .temperature-description {
+    max-width: 160px;
+    font-size: 1em;
+  }
+  .icon {
+    height: 50px;
+    width: 50px;
+  }
 }
