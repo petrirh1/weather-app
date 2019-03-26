@@ -23,7 +23,7 @@ window.addEventListener("load", () => {
           navigator.language || // All browsers
           navigator.userLanguage; // IE <= 10
 
-        console.log(userLanguage);
+        alert(userLanguage);
 
         // pre translate greetings based on preferred language
         preTranslate(userLanguage);
