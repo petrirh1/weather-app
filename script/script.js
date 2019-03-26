@@ -23,7 +23,10 @@ window.addEventListener("load", () => {
           navigator.language || // All browsers
           navigator.userLanguage; // IE <= 10
 
-        alert(userLanguage);
+        // shortens lang code
+        userLanguage = shortenLangCode(userLanguage);
+
+        console.log(userLanguage);
 
         // pre translate greetings based on preferred language
         preTranslate(userLanguage);
@@ -93,6 +96,14 @@ function getTime() {
 
   // returns an array of variables
   return [hours, minutes];
+}
+
+// shortens language code
+function shortenLangCode(lang) {
+  if (lang.includes("-")) {
+    lang = lang.substring(0, lang.indexOf('-'));
+  }
+  return lang;
 }
 
 // replaces certain character combinations with scandic equivalent
