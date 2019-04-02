@@ -293,46 +293,6 @@ function getGreeting(greeting, language) {
 }
 
 // tippy tooltip
-tippy('.greeting', {
-  content: "This is a greeting",
-  placement: 'top',
-  arrow: true,
-  arrowType: 'round',
-  animateFill: false,
-  animation: 'shift-away',
-  delay: 100,
-})
-
-tippy('.location', {
-  content: "This is your current location",
-  placement: 'top',
-  arrow: true,
-  arrowType: 'round',
-  animateFill: false,
-  animation: 'shift-away',
-  delay: 100,
-})
-
-tippy('.info', {
-  content: "Current weather info",
-  placement: 'top',
-  arrow: true,
-  arrowType: 'round',
-  animateFill: false,
-  animation: 'shift-away',
-  delay: 100,
-})
-
-tippy('.icon', {
-  content: "This represents weather",
-  placement: 'top',
-  arrow: true,
-  arrowType: 'round',
-  animateFill: false,
-  animation: 'shift-away',
-  delay: 100,
-})
-
 tippy('#yandex', {
   content: "Visit Yandex",
   placement: 'top',
