@@ -1,14 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Quicksand");
-html {
-  display: flex;
-  justify-content: center;
-  margin-top: 10%;
-}
 
 body {
   color: #555659;
-  min-width: 800px;
   font-family: "Quicksand", sans-serif;
+}
+
+.content {
+  min-width: 800px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 ::selection {
@@ -62,8 +64,9 @@ body {
   cursor: pointer;
 }
 
-.content {
+.info {
   margin: auto;
+
 }
 
 #loader {
@@ -114,6 +117,8 @@ a:not(:hover) {
   transition: 0.5s;
 }
 
+
+/* loader */
 @-webkit-keyframes spin {
   /* Safari */
   0% {
@@ -124,6 +129,7 @@ a:not(:hover) {
   }
 }
 
+/* loader */
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -144,8 +150,8 @@ a:not(:hover) {
     font-size: 1.2em;
   }
   .weather-container {
-    padding-left: 30px !important;
-    padding-right: 30px !important;
+    /* top, right, bottom, left */
+    padding: 40px !important;
   }
   h1 {
     font-size: 1.7em;
