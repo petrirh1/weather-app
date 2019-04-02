@@ -23,10 +23,10 @@ window.addEventListener("load", () => {
           navigator.language || // All browsers
           navigator.userLanguage; // IE <= 10
 
+        console.log(userLanguage);
+
         // shortens lang code
         userLanguage = shortenLangCode(userLanguage);
-
-        console.log(userLanguage);
 
         // pre translate greetings based on preferred language
         preTranslate(userLanguage);
@@ -50,13 +50,16 @@ window.addEventListener("load", () => {
               throw Error(`Request rejected with status ${response.status}`);
             }
           })
-          .then(function(data) {
+          .then(function (data) {
             var { name } = data;
             var { temp } = data.main;
             var { description, id } = data.weather[0];
+            console.log(data);
 
-            name = charToScandic(name);
+            //name = charToScandic(name);
             temp = Math.round(temp) + "°";
+
+            console.log(name);
 
             // set location
             location.textContent = name;
@@ -106,13 +109,6 @@ function shortenLangCode(lang) {
   return lang;
 }
 
-// replaces certain character combinations with scandic equivalent
-function charToScandic(value) {
-  value = value.replace(/ae/g, "ä");
-  value = value.replace(/oe/g, "ö");
-  return value;
-}
-
 // this is used to convert some language abbreviations for OpenWeatherMap API
 function abbreviation(lang) {
   if (lang == "cs") {
@@ -128,6 +124,13 @@ function abbreviation(lang) {
   }
   return lang;
 }
+
+// replaces certain character combinations with scandic equivalent
+// function charToScandic(value) {
+//   value = value.replace(/ae/g, "ä");
+//   value = value.replace(/oe/g, "ö");
+//   return value;
+// }
 
 // checks whether local storage has specific content or not
 function checkLocalStorage() {
@@ -194,13 +197,13 @@ function preTranslate(language) {
     const url = `${proxy}https://translate.yandex.net/api/v1.5/tr.json/translate?key=${yandexKey}&text=${greetings}&lang=${language}`;
 
     fetch(url)
-      .then(function(response) {
+      .then(function (response) {
         if (response.ok) {
           return response.json();
         }
         throw Error(`Request rejected with status ${response.status}`);
       })
-      .then(function(data) {
+      .then(function (data) {
         var text = data.text[0];
         storeData(text);
       });
@@ -211,10 +214,11 @@ function preTranslate(language) {
 function storeData(text) {
   // splits text into an array of strings
   var strings = text.split(",");
+  console.log(strings);
 
   // iterates through strings and stores them in local storage as key value pairs
   try {
-    strings.forEach(function(item, index) {
+    strings.forEach(function (item, index) {
       localStorage.setItem(index, item);
     });
     // error handling
@@ -268,7 +272,7 @@ function getGreeting(greeting, language) {
     const url = `${proxy}https://translate.yandex.net/api/v1.5/tr.json/translate?key=${yandexKey}&text=${greeting}&lang=${language}`;
 
     fetch(url)
-      .then(function(response) {
+      .then(function (response) {
         if (response.ok) {
           console.log(response);
           return response.json();
@@ -276,7 +280,7 @@ function getGreeting(greeting, language) {
           throw Error(`Request rejected with status ${response.status}`);
         }
       })
-      .then(function(data) {
+      .then(function (data) {
         var translatedGreeting = data.text[0];
 
         // set greeting
@@ -287,3 +291,64 @@ function getGreeting(greeting, language) {
     greetingText.textContent = greeting;
   }
 }
+
+// tippy tooltip
+tippy('.greeting', {
+  content: "This is a greeting",
+  placement: 'top',
+  arrow: true,
+  arrowType: 'round',
+  animateFill: false,
+  animation: 'shift-away',
+  delay: 100,
+})
+
+tippy('.location', {
+  content: "This is your current location",
+  placement: 'top',
+  arrow: true,
+  arrowType: 'round',
+  animateFill: false,
+  animation: 'shift-away',
+  delay: 100,
+})
+
+tippy('.info', {
+  content: "Current weather info",
+  placement: 'top',
+  arrow: true,
+  arrowType: 'round',
+  animateFill: false,
+  animation: 'shift-away',
+  delay: 100,
+})
+
+tippy('.icon', {
+  content: "This represents weather",
+  placement: 'top',
+  arrow: true,
+  arrowType: 'round',
+  animateFill: false,
+  animation: 'shift-away',
+  delay: 100,
+})
+
+tippy('#yandex', {
+  content: "Visit Yandex",
+  placement: 'top',
+  arrow: true,
+  arrowType: 'round',
+  animateFill: false,
+  animation: 'shift-away',
+  delay: 100,
+})
+
+tippy('#github', {
+  content: "Visit project page",
+  placement: 'top',
+  arrow: true,
+  arrowType: 'round',
+  animateFill: false,
+  animation: 'shift-away',
+  delay: 100,
+})
