@@ -171,6 +171,8 @@ tippy('#toggle', {
     content: content,
     theme: 'even-darker',
     animateFill: false,
+    touch: 'false',
+    touchHold: 'false',
     placement: 'bottom-end',
     distance: 30,
     arrow: true,
