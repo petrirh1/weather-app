@@ -1,0 +1,71 @@
+/* toggle switch */
+input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  border-style: solid;
+  border-color: var(--color-toggle-border);
+  text-indent: -9999px;
+  width: 38px;
+  height: 16px;
+  background: var(--color-toggle-border);
+  float: right;
+  border-radius: 100px;
+  position: relative;
+}
+
+label:hover {
+  border-style: solid;
+  border-color: var(--color-toggle-border);
+  text-indent: -9999px;
+  width: 38px;
+  height: 16px;
+  background: var(--color-toggle-border);
+  float: right;
+  border-radius: 100px;
+  position: relative;
+  -webkit-transition: .5s ease-out;
+  transition: .5s ease-out;
+  opacity: 1;
+}
+
+label:not(hover) {
+  border-style: solid;
+  border-color: var(--color-toggle-border);
+  text-indent: -9999px;
+  width: 38px;
+  height: 16px;
+  background: var(--color-toggle-border);
+  float: right;
+  border-radius: 100px;
+  position: relative;
+  -webkit-transition: .5s ease-out .5s;
+  transition: .5s ease-out .5s;
+  opacity: 0.4;
+}
+
+label:after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  width: 12px;
+  height: 12px;
+  background: var(--color-toggle);
+  border-radius: 90px;
+}
+
+input:checked + label {
+  background: var(--color-toggle-border);
+}
+
+input:checked + label:after {
+  left: calc(100% - 4px);
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+/*# sourceMappingURL=toggle.css.map */
