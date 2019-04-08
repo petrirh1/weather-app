@@ -111,6 +111,32 @@ body {
   color: var(--color-text-alt);
 }
 
+ul li {
+  position: relative;
+  right: 12px;
+  float: right;
+  list-style: none;
+}
+
+ul a {
+  text-decoration: none;
+  font-size: 0.90rem;
+  color: lightgrey;
+}
+
+ul a:hover {
+  color: grey;
+}
+
+ul a:not(hover) {
+  color: lightgrey;
+}
+
+ul a {
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+
 ::-moz-selection {
   background: rgba(105, 105, 105, 0.308);
 }
