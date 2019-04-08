@@ -1,7 +1,7 @@
 # weather app
-![alt tag](https://i.imgur.com/w4mhoYW.jpg "this is just a screenshot")
+![alt tag](https://i.imgur.com/eebnCvQ.png "this is just a screenshot")
 
-Minimal weather application which is written with HTML and vanilla Javascript. It uses `OpenWeatherMap API`  to provide location and forecast data, `Yandex.Translate API` on the other hand is used to get some translations to user preferred language. This is automatically provided when user enters the page.
+Minimal weather application which is written with HTML and vanilla Javascript. It uses `OpenWeatherMap API` to provide location and forecast data in user's prefered language. There's also a `dark mode` switch on the right top corner for those in need for more eye pleasing colors in darker environments.
 
 Icons are Dark Sky's awesome `Skycons.`
 
