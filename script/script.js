@@ -51,7 +51,7 @@ window.addEventListener("load", () => {
             },
             error => {
                 if (error.code == 1) {
-                    console.error("PERMISSION_DENIED_BY_USER");
+                    console.error("PERMISSION_DENIED");
                 } else if (error.code == 2) {
                     console.error("POSITION_UNAVAILABLE");
                 } else if (error.code == 2) {
@@ -143,10 +143,11 @@ checkbox.addEventListener('change', function () {
     localStorage.setItem('data-theme', value);
 });
 
+var theme;
 
 // get previously applied theme
 function setThemeOnLoad() {
-    let theme = localStorage.getItem('data-theme');
+    theme = localStorage.getItem('data-theme');
 
     if (theme == 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
