@@ -34,7 +34,7 @@ html[data-theme="dark"] {
   --color-text-alt: rgb(78, 78, 78);
   --color-text-link: #40474f;
   --color-text-link-hover: #646a70;
-  --color-toggle-border: #141414;
+  --color-toggle-border: #0e0e0e;
   --color-toggle: #23272b;
 }
 
@@ -126,19 +126,12 @@ ul a {
   text-decoration: none;
   font-size: 0.90rem;
   color: var(--color-text-link);
+  -webkit-transition: color .5s;
+  transition: color .5s;
 }
 
 ul a:hover {
   color: var(--color-text-link-hover);
-}
-
-ul a:not(hover) {
-  color: var(--color-text-link);
-}
-
-ul a {
-  -webkit-transition: .5s ease-in-out;
-  transition: .5s ease-in-out;
 }
 
 ::-moz-selection {
