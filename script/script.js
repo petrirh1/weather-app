@@ -15,7 +15,7 @@ window.addEventListener("load", () => {
                 long = position.coords.longitude;
                 lat = position.coords.latitude;
 
-                // get user's preferred language
+                // get user"s preferred language
                 lang =
                     (navigator.languages && navigator.languages[0]) || // Chrome / Firefox
                     navigator.language || // All browsers
@@ -79,7 +79,7 @@ function getTime() {
 
 function shortenLangCode(lang) {
     if (lang.includes("-")) {
-        lang = lang.substring(0, lang.indexOf('-'));
+        lang = lang.substring(0, lang.indexOf("-"));
     }
     return lang;
 }
@@ -125,36 +125,66 @@ function getIcon(id) {
 }
 
 // theme selector
-var checkbox = document.querySelector('input[name=theme]');
+var checkbox = document.querySelector("input[name=theme]");
 setThemeOnLoad();
 
-checkbox.addEventListener('change', function () {
+checkbox.addEventListener("change", function () {
     let value;
 
     if (this.checked) {
         trans();
-        document.documentElement.setAttribute('data-theme', 'dark');
-        value = 'dark';
+        document.documentElement.setAttribute("data-theme", "dark");
+        value = "dark";
     } else {
         trans();
-        document.documentElement.setAttribute('data-theme', 'light');
-        value = 'light';
+        document.documentElement.setAttribute("data-theme", "light");
+        value = "light";
     }
 
-    localStorage.setItem('data-theme', value);
+    localStorage.setItem("data-theme", value);
 });
 
 // get previously applied theme
 function setThemeOnLoad() {
-    let theme = localStorage.getItem('data-theme');
+    let theme = localStorage.getItem("data-theme");
 
-    if (theme == 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
+    if (theme == "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
         // set toggle state
         checkbox.checked = true;
     } else {
-        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.setAttribute("data-theme", "light");
     }
+}
+
+function isMobile() {
+    if (navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i)
+    ) {
+        return true;
+    }
+    return false;
+}
+
+function scaleForMobile() {
+    let icon = document.querySelector(".icon");
+    let isTrue = "false";
+    if (isMobile() && mobile.matches) {
+        icon.setAttribute("width", "256");
+        icon.setAttribute("height", "256");
+        icon.classList.add("scale");
+        isTrue = "true";
+    } else {
+        icon.classList.remove("scale");
+        icon.setAttribute("width", "90");
+        icon.setAttribute("height", "90");
+    }
+    console.log(isTrue);
 }
 
 // change fadeIn animation delays
@@ -173,6 +203,7 @@ function animationDelay(mobile) {
         icon.classList.remove("delay-50");
         icon.classList.add("delay-75");
     }
+    scaleForMobile();
 }
 
 var mobile = window.matchMedia("(max-width: 600px)");
@@ -181,23 +212,23 @@ mobile.addListener(animationDelay); // Attach listener function on state changes
 
 // theme transition
 let trans = () => {
-    document.documentElement.classList.add('transition');
+    document.documentElement.classList.add("transition");
     window.setTimeout(() => {
-        document.documentElement.classList.remove('transition');
+        document.documentElement.classList.remove("transition");
     }, 1000);
 }
 
-const instance = new tippy('#toggle', {
-    content: 'Switch between light and dark mode',
-    theme: 'even-darker',
+const instance = new tippy("#toggle", {
+    content: "Switch between light and dark mode",
+    theme: "even-darker",
     animateFill: false,
-    touch: 'false',
-    touchHold: 'false',
-    placement: 'bottom-end',
+    touch: "false",
+    touchHold: "false",
+    placement: "bottom-end",
     distance: 30,
     arrow: true,
-    arrowType: 'round',
-    animation: 'shift-away',
+    arrowType: "round",
+    animation: "shift-away",
     delay: 250,
     duration: 200,
 });
