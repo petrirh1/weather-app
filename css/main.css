@@ -181,6 +181,11 @@ html.transition *:after {
   html {
     height: 90%;
   }
+  html[data-theme="dark"] {
+    --bg: #16191c;
+    --color-toggle-border: #000000;
+    --color-toggle: #3c434d;
+  }
   html[data-theme="dark"] .container {
     background-color: rgba(0, 0, 0, 0) !important;
   }
