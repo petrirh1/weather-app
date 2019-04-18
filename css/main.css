@@ -179,7 +179,7 @@ html.transition *:after {
     top: 50% !important;
   }
   html {
-    height: 85%;
+    height: 90%;
   }
   html[data-theme="dark"] .container {
     background-color: rgba(0, 0, 0, 0) !important;
@@ -188,37 +188,6 @@ html.transition *:after {
     display: none;
   }
   .container {
-    background-color: rgba(0, 0, 0, 0) !important;
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-    -ms-grid-rows: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: 4em;
-        grid-template-areas: "location" "icon" "temp-info";
-    -webkit-box-shadow: 0px 32px 167px -21px rgba(0, 0, 0, 0) !important;
-            box-shadow: 0px 32px 167px -21px rgba(0, 0, 0, 0) !important;
-  }
-  .container .location {
-    -ms-grid-row: 1;
-    -ms-grid-column: 1;
-    grid-area: location;
-  }
-  .container .icon {
-    -ms-grid-row: 2;
-    -ms-grid-column: 1;
-    grid-area: icon;
-    position: relative;
-    -ms-grid-column-align: center;
-        justify-self: center;
-  }
-  .container .temp-info {
-    -ms-grid-row: 3;
-    -ms-grid-column: 1;
-    grid-area: temp-info;
-  }
-  .container .location, .container .icon, .container .temp-info {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -226,9 +195,51 @@ html.transition *:after {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    background-color: rgba(0, 0, 0, 0) !important;
+    -webkit-box-shadow: 0px 32px 167px -21px rgba(0, 0, 0, 0) !important;
+            box-shadow: 0px 32px 167px -21px rgba(0, 0, 0, 0) !important;
+  }
+  .container .location {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  .container .icon {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    margin: -20px;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  .container .temp-info {
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
   }
 }
 
@@ -254,5 +265,10 @@ html.transition *:after {
 .delay-75 {
   -webkit-animation-delay: .75s;
           animation-delay: .75s;
+}
+
+.scale {
+  -webkit-transform: scale(0.4);
+          transform: scale(0.4);
 }
 /*# sourceMappingURL=main.css.map */
