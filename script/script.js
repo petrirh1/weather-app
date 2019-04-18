@@ -1,9 +1,10 @@
 const defaultLanguage = "en";
-const iconColor = "#555659";
+var iconColor = "#555c64";
 
 window.addEventListener("load", () => {
     let long;
     let lat;
+    let lang;
     let location = document.querySelector(".location");
     let temperature = document.querySelector(".temperature");
     let temperatureDescription = document.querySelector(".temperature-description");
@@ -15,7 +16,7 @@ window.addEventListener("load", () => {
                 lat = position.coords.latitude;
 
                 // get user's preferred language
-                var lang =
+                lang =
                     (navigator.languages && navigator.languages[0]) || // Chrome / Firefox
                     navigator.language || // All browsers
                     navigator.userLanguage; // IE <= 10
@@ -46,7 +47,7 @@ window.addEventListener("load", () => {
                         document.title = "Weather in " + name;
                         temperature.textContent = temp;
                         temperatureDescription.textContent = description;
-                        setIcon(getIcon(id), document.querySelector(".icon "));
+                        setIcon(getIcon(id), document.querySelector(".icon"));
                     });
             },
             error => {
@@ -143,11 +144,9 @@ checkbox.addEventListener('change', function () {
     localStorage.setItem('data-theme', value);
 });
 
-var theme;
-
 // get previously applied theme
 function setThemeOnLoad() {
-    theme = localStorage.getItem('data-theme');
+    let theme = localStorage.getItem('data-theme');
 
     if (theme == 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
@@ -158,6 +157,28 @@ function setThemeOnLoad() {
     }
 }
 
+// change fadeIn animation delays
+function animationDelay(mobile) {
+    let icon = document.querySelector(".icon");
+    let tempInfo = document.querySelector(".temp-info");
+
+    if (mobile.matches) {
+        tempInfo.classList.remove("delay-50");
+        tempInfo.classList.add("delay-75");
+        icon.classList.remove("delay-75");
+        icon.classList.add("delay-50");
+    } else {
+        tempInfo.classList.remove("delay-75");
+        tempInfo.classList.add("delay-50");
+        icon.classList.remove("delay-50");
+        icon.classList.add("delay-75");
+    }
+}
+
+var mobile = window.matchMedia("(max-width: 600px)");
+animationDelay(mobile); // Call listener function at run time
+mobile.addListener(animationDelay); // Attach listener function on state changes 
+
 // theme transition
 let trans = () => {
     document.documentElement.classList.add('transition');
@@ -166,10 +187,8 @@ let trans = () => {
     }, 1000);
 }
 
-const content = "Switch between light and dark mode";
-
-tippy('#toggle', {
-    content: content,
+const instance = new tippy('#toggle', {
+    content: 'Switch between light and dark mode',
     theme: 'even-darker',
     animateFill: false,
     touch: 'false',
@@ -182,4 +201,3 @@ tippy('#toggle', {
     delay: 250,
     duration: 200,
 });
-
