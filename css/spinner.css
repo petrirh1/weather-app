@@ -13,7 +13,7 @@
 .spinner > div {
   width: 10px;
   height: 10px;
-  background-color: rgba(90, 90, 90, 0.253);
+  background-color: var(--color-text-link);
   border-radius: 100%;
   display: inline-block;
   -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;

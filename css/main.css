@@ -12,9 +12,9 @@ html {
           justify-content: center;
   --bg: #ffffff;
   --bg-panel: #ffffff;
-  --color-heading: #6ad3b0;
+  --color-heading: rgb(87, 181, 147);
   --color-text: #555659;
-  --color-text-alt: #6d6e72;
+  --color-text-alt: #87888d;
   --color-text-link: lightgrey;
   --color-text-link-hover: grey;
   --color-toggle-border: #dfdfdf;
@@ -23,24 +23,24 @@ html {
 
 html .container {
   -webkit-box-shadow: 0px 32px 167px -21px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 32px 167px -21px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 32px 167px -21px rgba(0, 0, 0, 0.15);
 }
 
 html[data-theme="dark"] {
-  --bg: #23272b;
+  --bg: #1f2429;
   --bg-panel: #16191c;
-  --color-heading:  #6ee7bf;
-  --color-text: rgb(102, 102, 102);
-  --color-text-alt: rgb(78, 78, 78);
-  --color-text-link: #40474f;
-  --color-text-link-hover: #646a70;
+  --color-heading: #6ee7bf;
+  --color-text: #5f6770;
+  --color-text-alt: #4b5158;
+  --color-text-link: #454c53;
+  --color-text-link-hover: #727d88;
   --color-toggle-border: #0e0e0e;
   --color-toggle: #23272b;
 }
 
 html[data-theme="dark"] .container {
   -webkit-box-shadow: 0px 32px 167px -21px rgba(0, 0, 0, 0);
-  box-shadow: 0px 32px 167px -21px rgba(0, 0, 0, 0);
+          box-shadow: 0px 32px 167px -21px rgba(0, 0, 0, 0);
 }
 
 body {
@@ -115,11 +115,17 @@ body {
   color: var(--color-text-alt);
 }
 
+/* chrome */
+label:focus {
+  outline: none;
+}
+
 ul li {
   position: relative;
   right: 12px;
   float: right;
   list-style: none;
+  font-weight: 500;
 }
 
 ul a {
@@ -135,11 +141,11 @@ ul a:hover {
 }
 
 ::-moz-selection {
-  background: rgba(105, 105, 105, 0.308);
+  background: #333d4467;
 }
 
 ::selection {
-  background: rgba(105, 105, 105, 0.308);
+  background: #333d4467;
 }
 
 html.transition,
@@ -169,55 +175,66 @@ html.transition *:after {
 }
 
 @media only screen and (max-width: 600px) {
+  .spinner {
+    top: 50% !important;
+  }
+  html {
+    height: 85%;
+  }
+  html[data-theme="dark"] .container {
+    background-color: rgba(0, 0, 0, 0) !important;
+  }
+  ul a {
+    display: none;
+  }
   .container {
-    padding: 2em;
-    -ms-grid-columns: auto;
-        grid-template-columns: auto;
-    -ms-grid-rows: auto;
-        grid-template-rows: auto;
-        grid-template-areas: "location ." "temperature icon";
-    min-width: 70vw;
+    background-color: rgba(0, 0, 0, 0) !important;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 4em;
+        grid-template-areas: "location" "icon" "temp-info";
+    -webkit-box-shadow: 0px 32px 167px -21px rgba(0, 0, 0, 0) !important;
+            box-shadow: 0px 32px 167px -21px rgba(0, 0, 0, 0) !important;
   }
   .container .location {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
     grid-area: location;
   }
-  .container .temp-info {
-    -ms-grid-row: 2;
-    -ms-grid-column: 1;
-    grid-area: temperature;
-    -ms-grid-column-align: left;
-        justify-self: left;
-  }
   .container .icon {
     -ms-grid-row: 2;
-    -ms-grid-column: 2;
+    -ms-grid-column: 1;
     grid-area: icon;
-    -ms-grid-column-align: right;
-        justify-self: right;
+    position: relative;
+    -ms-grid-column-align: center;
+        justify-self: center;
   }
-}
-
-@media only screen and (max-width: 600px) and (max-width: 540px) {
-  .container {
-    min-width: 65vw;
+  .container .temp-info {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    grid-area: temp-info;
   }
-}
-
-@media only screen and (max-width: 600px) and (max-width: 440px) {
-  .container {
-    min-width: 60vw;
-  }
-  .icon, .location, .temperature, .temperature-description {
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8);
+  .container .location, .container .icon, .container .temp-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 }
 
 .tippy-tooltip.even-darker-theme {
   background-color: #0b0d0e;
-  color: darkgrey;
+  color: #9fa7af;
 }
 
 .tippy-tooltip.even-darker-theme .tippy-roundarrow {
