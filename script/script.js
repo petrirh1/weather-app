@@ -85,7 +85,7 @@ function shortenLangCode(lang) {
 }
 
 function setIcon(id, iconID) {
-    const skycons = new Skycons({ color: iconColor });
+    const skycons = new Skycons({ "color": iconColor, "resizeClear": true });
     skycons.play();
     return skycons.set(iconID, Skycons[id]);
 }
