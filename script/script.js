@@ -22,7 +22,6 @@ window.addEventListener("load", () => {
                     navigator.userLanguage; // IE <= 10
 
                 lang = shortenLangCode(lang);
-                console.log(lang);
 
                 const key = "200de6c63566b3052efa4017421cb685";
                 const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&lang=${lang}&units=metric&APPID=${key}`;
@@ -103,14 +102,12 @@ function getIcon(id) {
         id = "SNOW";
     } else if (id >= "701" && id <= "781") {
         id = "FOG";
-
     } else if (id == "800") {
         if (hours >= 21 || hours <= 6) {
             id = "CLEAR_NIGHT";
         } else {
             id = "CLEAR_DAY";
         }
-
     } else if (id >= "801" && id <= "802") {
         if (hours >= 21 || hours <= 6) {
             id = "PARTLY_CLOUDY_NIGHT";
@@ -120,7 +117,6 @@ function getIcon(id) {
     } else if (id >= "803" && id <= "804") {
         id = "CLOUDY";
     }
-
     return id;
 }
 
@@ -171,20 +167,18 @@ function isMobile() {
     return false;
 }
 
-function scaleForMobile() {
+function scaleDown() {
     let icon = document.querySelector(".icon");
-    let isTrue = "false";
+
     if (isMobile() && mobile.matches) {
         icon.setAttribute("width", "256");
         icon.setAttribute("height", "256");
         icon.classList.add("scale");
-        isTrue = "true";
     } else {
         icon.classList.remove("scale");
         icon.setAttribute("width", "90");
         icon.setAttribute("height", "90");
     }
-    console.log(isTrue);
 }
 
 // change fadeIn animation delays
@@ -203,12 +197,12 @@ function animationDelay(mobile) {
         icon.classList.remove("delay-50");
         icon.classList.add("delay-75");
     }
-    scaleForMobile();
+    scaleDown();
 }
 
 var mobile = window.matchMedia("(max-width: 600px)");
-animationDelay(mobile); // Call listener function at run time
-mobile.addListener(animationDelay); // Attach listener function on state changes 
+animationDelay(mobile);
+mobile.addListener(animationDelay);
 
 // theme transition
 let trans = () => {
@@ -218,7 +212,7 @@ let trans = () => {
     }, 1000);
 }
 
-const instance = new tippy("#toggle", {
+tippy("#toggle", {
     content: "Switch between light and dark mode",
     theme: "even-darker",
     animateFill: false,
