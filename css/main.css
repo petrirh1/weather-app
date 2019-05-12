@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Quicksand");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,500");
 html {
   height: 75%;
   font-family: 'Quicksand', sans-serif;
@@ -12,12 +12,12 @@ html {
           justify-content: center;
   --bg: #ffffff;
   --bg-panel: #ffffff;
-  --color-heading: rgb(87, 181, 147);
-  --color-text: #555659;
-  --color-text-alt: #87888d;
-  --color-text-link: lightgrey;
-  --color-text-link-hover: grey;
-  --color-toggle-border: #dfdfdf;
+  --color-heading: #6ad3b0;
+  --color-text: #555c64;
+  --color-text-alt: #00000071;
+  --color-text-link: rgb(180, 180, 180);
+  --color-text-link-hover: rgb(100, 100, 100);
+  --color-toggle-border: #b6b6b6;
   --color-toggle: #ffffff;
 }
 
@@ -30,12 +30,12 @@ html[data-theme="dark"] {
   --bg: #1f2429;
   --bg-panel: #16191c;
   --color-heading: #6ee7bf;
-  --color-text: #5f6770;
+  --color-text: #6a727c;
   --color-text-alt: #4b5158;
-  --color-text-link: #454c53;
-  --color-text-link-hover: #727d88;
-  --color-toggle-border: #0e0e0e;
-  --color-toggle: #23272b;
+  --color-text-link: #4c545c;
+  --color-text-link-hover: #7c838a;
+  --color-toggle-border: #070707;
+  --color-toggle: #656e77;
 }
 
 html[data-theme="dark"] .container {
@@ -45,6 +45,16 @@ html[data-theme="dark"] .container {
 
 body {
   background-color: var(--bg);
+}
+
+label:focus {
+  outline: none;
+}
+
+.settings {
+  position: absolute;
+  top: 60px;
+  right: 25px;
 }
 
 .toggle-container {
@@ -72,19 +82,21 @@ body {
 
 .container .location {
   color: var(--color-heading);
-  font-size: 1.65em;
+  font-size: 1.8em;
+  font-weight: 400;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: location;
   margin: 0;
+  text-transform: capitalize;
 }
 
 .container .temp-info {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: temperature;
-  font-size: 0.90em;
-  line-height: 2em;
+  font-size: 0.9em;
+  line-height: 1.5em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -95,6 +107,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  outline: none;
+  cursor: pointer;
+  font-weight: 400;
 }
 
 .container .icon {
@@ -107,30 +122,37 @@ body {
 }
 
 .container .temperature {
+  display: inline;
   color: var(--color-text);
   font-size: 1.8em;
 }
 
-.container .temperature-description {
+.container #temp-unit {
+  position: relative;
+  bottom: 8px;
+  left: -2px;
   color: var(--color-text-alt);
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-size: 1.2em;
 }
 
-/* chrome */
-label:focus {
-  outline: none;
+.container .temperature-description {
+  color: var(--color-text-alt);
+  font-weight: 500;
 }
 
 ul li {
   position: relative;
-  right: 12px;
+  right: 0;
   float: right;
   list-style: none;
-  font-weight: 500;
 }
 
 ul a {
   text-decoration: none;
   font-size: 0.90rem;
+  font-weight: 500;
   color: var(--color-text-link);
   -webkit-transition: color .5s;
   transition: color .5s;
@@ -141,11 +163,11 @@ ul a:hover {
 }
 
 ::-moz-selection {
-  background: #333d4467;
+  background: #83939e;
 }
 
 ::selection {
-  background: #333d4467;
+  background: #83939e;
 }
 
 html.transition,
@@ -200,17 +222,13 @@ html.transition *:after {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -ms-flex-line-pack: center;
-        align-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
     background-color: rgba(0, 0, 0, 0) !important;
     -webkit-box-shadow: 0px 32px 167px -21px rgba(0, 0, 0, 0) !important;
             box-shadow: 0px 32px 167px -21px rgba(0, 0, 0, 0) !important;
+  }
+  .container .toggle-container {
+    right: 1rem;
+    top: 1rem;
   }
   .container .location {
     -webkit-box-ordinal-group: 2;
@@ -249,8 +267,15 @@ html.transition *:after {
 }
 
 .tippy-tooltip.even-darker-theme {
-  background-color: #0b0d0e;
-  color: #9fa7af;
+  background-color: #000000;
+  color: #e6e6e6;
+  border-radius: .25rem;
+  -webkit-box-shadow: 0px 2px 33px 0px rgba(0, 0, 0, 0.35);
+          box-shadow: 0px 2px 33px 0px rgba(0, 0, 0, 0.35);
+}
+
+.tippy-tooltip.even-darker-theme .highlight {
+  font-style: italic;
 }
 
 .tippy-tooltip.even-darker-theme .tippy-roundarrow {
@@ -275,5 +300,9 @@ html.transition *:after {
 .scale {
   -webkit-transform: scale(0.4);
           transform: scale(0.4);
+}
+
+.padding {
+  padding: 60px;
 }
 /*# sourceMappingURL=main.css.map */
