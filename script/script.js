@@ -1,5 +1,7 @@
-const defaultLanguage = "en";
-var iconColor = "#555c64";
+"use strict";
+
+let iconColor = "#555c64";
+let tempUnit;
 
 window.addEventListener("load", () => {
     let long;
@@ -15,7 +17,7 @@ window.addEventListener("load", () => {
                 long = position.coords.longitude;
                 lat = position.coords.latitude;
 
-                // get user"s preferred language
+                // get user's preferred language
                 lang =
                     (navigator.languages && navigator.languages[0]) || // Chrome / Firefox
                     navigator.language || // All browsers
@@ -23,8 +25,11 @@ window.addEventListener("load", () => {
 
                 lang = shortenLangCode(lang);
 
+                // set unit as metric or imperial
+                setTempUnit();
+
                 const key = "200de6c63566b3052efa4017421cb685";
-                const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&lang=${lang}&units=metric&APPID=${key}`;
+                const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&lang=${lang}&units=${tempUnit}&APPID=${key}`;
 
                 fetch(url)
                     .then(response => {
@@ -41,7 +46,8 @@ window.addEventListener("load", () => {
                         let { temp } = data.main;
                         let { description, id } = data.weather[0];
 
-                        temp = Math.round(temp) + "°";
+                        showTempUnit();
+                        temp = Math.round(temp);
                         location.textContent = name;
                         document.title = "Weather in " + name;
                         temperature.textContent = temp;
@@ -66,16 +72,6 @@ window.addEventListener("load", () => {
     }
 });
 
-var date = new Date();
-
-function getTime() {
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-
-    // array of variables
-    return [hours, minutes];
-}
-
 function shortenLangCode(lang) {
     if (lang.includes("-")) {
         lang = lang.substring(0, lang.indexOf("-"));
@@ -90,38 +86,87 @@ function setIcon(id, iconID) {
 }
 
 function getIcon(id) {
-    let time = getTime();
+    let date = new Date();
+    let hours = date.getHours();
 
-    let hours = time[0];
-
-    if (id >= "200" && id <= "531") {
-        id = "RAIN";
-    } else if (id == "611") {
-        id = "SLEET";
-    } else if (id >= "600" && id <= "622") {
-        id = "SNOW";
-    } else if (id >= "701" && id <= "781") {
-        id = "FOG";
-    } else if (id == "800") {
-        if (hours >= 21 || hours <= 6) {
-            id = "CLEAR_NIGHT";
-        } else {
-            id = "CLEAR_DAY";
+    if (typeof id === "number") {
+        if (id >= 200 && id <= 531) {
+            id = "RAIN";
         }
-    } else if (id >= "801" && id <= "802") {
-        if (hours >= 21 || hours <= 6) {
-            id = "PARTLY_CLOUDY_NIGHT";
-        } else {
-            id = "PARTLY_CLOUDY_DAY";
+        else if (id == 611) {
+            id = "SLEET";
         }
-    } else if (id >= "803" && id <= "804") {
-        id = "CLOUDY";
+        else if (id >= 600 && id <= 622) {
+            id = "SNOW";
+        }
+        else if (id >= 701 && id <= 78) {
+            id = "FOG";
+        }
+        else if (id == 800) {
+            if (hours >= 21 || hours <= 6) {
+                id = "CLEAR_NIGHT";
+            } else {
+                id = "CLEAR_DAY";
+            }
+        }
+        else if (id >= 801 && id <= 802) {
+            if (hours >= 21 || hours <= 6) {
+                id = "PARTLY_CLOUDY_NIGHT";
+            } else {
+                id = "PARTLY_CLOUDY_DAY";
+            }
+        }
+        else if (id >= 803 && id <= 804) {
+            id = "CLOUDY";
+        } else {
+            throw Error("INVALID_PARAMETER");
+        }
+        return id;
     }
-    return id;
+    throw Error("INVALID_PARAMETER");
+}
+
+// toggle between celsius / fahrenheit
+document.querySelector(".temp-info").addEventListener("click", function () {
+    let unit = document.querySelector("#temp-unit").innerHTML;
+    let temp = document.querySelector(".temperature").innerHTML;
+
+    if (unit === "°C") {
+        document.querySelector("#temp-unit").innerHTML = "°F";
+        document.querySelector(".temperature").innerHTML = Math.round(temp * 9 / 5 + 32);
+        localStorage.setItem("unit", "f");
+    } else if (unit === "°F") {
+        document.querySelector("#temp-unit").innerHTML = "°C";
+        document.querySelector(".temperature").innerHTML = Math.round((temp - 32) / 1.8);
+        localStorage.setItem("unit", "c");
+    } else {
+        localStorage.removeItem("unit");
+        throw Error("UNKOWN_TYPE");
+    }
+});
+
+let storedValue = localStorage.getItem("unit");
+
+function setTempUnit() {
+    if (storedValue === "f") {
+        tempUnit = "imperial";
+    } else if (storedValue === "c" || storedValue === null) {
+        tempUnit = "metric";
+    } else {
+        throw Error("UNABLE_TO_SET_TEMP_UNIT");
+    }
+}
+
+function showTempUnit() {
+    if (storedValue === "f") {
+        document.querySelector("#temp-unit").innerHTML = "°F";
+    } else if (storedValue === "c" || storedValue === null) {
+        document.querySelector("#temp-unit").innerHTML = "°C";
+    }
 }
 
 // theme selector
-var checkbox = document.querySelector("input[name=theme]");
+let checkbox = document.querySelector("input[name=theme]");
 setThemeOnLoad();
 
 checkbox.addEventListener("change", function () {
@@ -136,23 +181,22 @@ checkbox.addEventListener("change", function () {
         document.documentElement.setAttribute("data-theme", "light");
         value = "light";
     }
-
     localStorage.setItem("data-theme", value);
 });
 
-// get previously applied theme
 function setThemeOnLoad() {
     let theme = localStorage.getItem("data-theme");
 
-    if (theme == "dark") {
+    if (theme === "dark") {
         document.documentElement.setAttribute("data-theme", "dark");
         // set toggle state
         checkbox.checked = true;
-    } else {
+    } else if (theme === "light" || theme === null) {
         document.documentElement.setAttribute("data-theme", "light");
     }
 }
 
+// checks whether device is mobile
 function isMobile() {
     if (navigator.userAgent.match(/Android/i)
         || navigator.userAgent.match(/webOS/i)
@@ -167,26 +211,36 @@ function isMobile() {
     return false;
 }
 
+// scales down weather icon in order to make it crisp on high dpi devices
 function scaleDown() {
     let icon = document.querySelector(".icon");
 
-    if (isMobile() && mobile.matches) {
+    if (isMobile() && isNarrow.matches) {
+        if (icon.classList.contains("padding")) {
+            icon.classList.remove("padding");
+        }
         icon.setAttribute("width", "256");
         icon.setAttribute("height", "256");
         icon.classList.add("scale");
-    } else {
-        icon.classList.remove("scale");
+    } else if (isNarrow.matches) {
+        icon.classList.add("padding");
+    }
+    else {
+        icon.classList.remove("scale", "padding");
         icon.setAttribute("width", "90");
         icon.setAttribute("height", "90");
     }
 }
 
-// change fadeIn animation delays
-function animationDelay(mobile) {
+/* 
+* change fadeIn animation delay order for mobile
+* because of different layout
+*/
+function animationDelay(isNarrow) {
     let icon = document.querySelector(".icon");
     let tempInfo = document.querySelector(".temp-info");
 
-    if (mobile.matches) {
+    if (isNarrow.matches) {
         tempInfo.classList.remove("delay-50");
         tempInfo.classList.add("delay-75");
         icon.classList.remove("delay-75");
@@ -200,9 +254,9 @@ function animationDelay(mobile) {
     scaleDown();
 }
 
-var mobile = window.matchMedia("(max-width: 600px)");
-animationDelay(mobile);
-mobile.addListener(animationDelay);
+var isNarrow = window.matchMedia("(max-width: 600px)");
+animationDelay(isNarrow);
+isNarrow.addListener(animationDelay);
 
 // theme transition
 let trans = () => {
@@ -213,15 +267,26 @@ let trans = () => {
 }
 
 tippy("#toggle", {
-    content: "Switch between light and dark mode",
+    content: 'Toggle between <span class="highlight">light</span> and <span class="highlight">dark mode</span>',
     theme: "even-darker",
     animateFill: false,
     touch: "false",
     touchHold: "false",
     placement: "bottom-end",
-    distance: 30,
-    arrow: true,
-    arrowType: "round",
+    distance: 20,
+    animation: "shift-away",
+    delay: 250,
+    duration: 200,
+});
+
+tippy(".temp-info", {
+    content: 'Toggle between <span class="highlight">celsius</span> and <span class="highlight">fahrenheit</span>',
+    theme: "even-darker",
+    animateFill: false,
+    touch: "false",
+    touchHold: "false",
+    placement: "top",
+    distance: 20,
     animation: "shift-away",
     delay: 250,
     duration: 200,
