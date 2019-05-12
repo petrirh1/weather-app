@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Minimalistic weather application">
+    <meta name="keywords" content="HTML,CSS,JavaScript,weather-app">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
@@ -12,10 +14,10 @@
     <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#5bbad5" />
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#ffffff" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/toggle.css">
     <link rel="stylesheet" href="./css/spinner.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
     <title>Weather</title>
 </head>
 
@@ -33,10 +35,11 @@
             </div>
             <div>
                 <div class="temperature"></div>
+                <span id="temp-unit"></span>
                 <div class="temperature-description"></div>
             </div>
         </div>
-        <canvas class="icon animated fadeIn" width="90 " height="90"></canvas>
+        <canvas class="icon animated fadeIn" width="90" height="90"></canvas>
     </div>
     <ul>
         <li class="animated fadeIn"><a href="https://github.com/petrirh1/weather-app">View on Github</a>
