@@ -16,6 +16,7 @@ label {
   border-radius: 100px;
   position: relative;
   -webkit-transition: .5s ease-out;
+  -o-transition: .5s ease-out;
   transition: .5s ease-out;
   opacity: .4;
 }
@@ -51,6 +52,7 @@ input:checked + label {
 input:checked + label:after {
   left: calc(100% - 4px);
   -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
           transform: translateX(-100%);
 }
 /*# sourceMappingURL=toggle.css.map */

@@ -155,6 +155,7 @@ ul a {
   font-weight: 500;
   color: var(--color-text-link);
   -webkit-transition: color .5s;
+  -o-transition: color .5s;
   transition: color .5s;
 }
 
@@ -175,8 +176,10 @@ html.transition *,
 html.transition *:before,
 html.transition *:after {
   -webkit-transition: all 750ms !important;
+  -o-transition: all 750ms !important;
   transition: all 750ms !important;
   -webkit-transition-delay: 0 !important;
+       -o-transition-delay: 0 !important;
           transition-delay: 0 !important;
 }
 
@@ -299,6 +302,7 @@ html.transition *:after {
 
 .scale {
   -webkit-transform: scale(0.4);
+      -ms-transform: scale(0.4);
           transform: scale(0.4);
 }
 
