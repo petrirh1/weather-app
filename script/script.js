@@ -28,7 +28,7 @@ window.addEventListener("load", () => {
                 // set unit as metric or imperial
                 setTempUnit();
 
-                const key = "200de6c63566b3052efa4017421cb685";
+                const key = "your_api_key";
                 const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&lang=${lang}&units=${tempUnit}&APPID=${key}`;
 
                 fetch(url)
